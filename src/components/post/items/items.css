@@ -1,0 +1,105 @@
+.post-items{
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 10px rgba(238, 238, 238, 1);
+    margin-top: 15px;
+    border-radius: 10px;
+}
+.item{
+    width: 100%;
+    padding: 15px;
+}
+.control-people{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.people-post{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.people-post>div>span{
+    color: #555;
+    font-size: 13px;
+}
+
+.post-act span{
+    font-size: 30px;
+    color: #555;
+    cursor: pointer;
+}
+.people-post img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.post-content{
+    margin-top: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.post-like{
+    margin-top: 5px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+.post-like ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-like ul li{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+    color: #555;
+    font-weight: 400;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.post-like ul li:hover{
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.post-like .like,.post-like .message{
+    margin-right: 5px;
+    font-size: 20px;
+}
+.post-comment{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.post-comment img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.post-comment input{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background-color: #eee;
+    color: #555;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.post-comment input:focus{
+    outline: none;
+}
