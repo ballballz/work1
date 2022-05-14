@@ -4,6 +4,8 @@ import {Comments} from './comments/Comments'
 import {BiMessage,BiLike} from 'react-icons/bi'
 import Profile from '../../header/profile.jpg'
 import {FaLock} from 'react-icons/fa'
+import {AiFillLike} from 'react-icons/ai'
+
 
 
 export const Items = () => {
@@ -25,9 +27,20 @@ export const Items = () => {
         <div className='post-content'>
           DDDDDD
         </div>
+        <div className='show-comment'>
+          <div className='emoji-comment'>
+            <div className='control-emoji'>
+              <AiFillLike className='like-active'/>
+            </div>
+            <p>Ball Ball'</p>
+          </div>
+          <div className='count-comment'>
+            <p>1 ความคิดเห็น</p>
+          </div>
+        </div>
         <div className='post-like'>
           <ul>
-            <li><BiLike className='like'/>ถูกใจ</li>
+            <li className='active'><BiLike className='like'/>ถูกใจ</li>
             <li><BiMessage className='message'/>แสดงความคิดเห็น</li>
           </ul>
         </div>

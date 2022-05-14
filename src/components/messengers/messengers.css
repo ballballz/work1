@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.messenger{
+    width: 100%;
+    height: 100vh;
+    margin-right: 5px;
+}
+.messenger:hover{
+    overflow: auto;
+}
+.message-head{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    position: relative;
+}
+.message-head h4{
+    padding: 15px;
+    color: #555;
+}
+.message-head ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.message-head ul li{
+    list-style: none;
+    color: #555;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.message-head ul li:hover{
+    background-color: #CCCCCC;
+}
+.list-friend ul li{
+    list-style: none;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+}
+.list-friend ul li:hover{
+    cursor: pointer;
+    background-color: #DADDE1;
+}
+.list-friend ul li img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* width */
+.messenger::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  .messenger::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .messenger::-webkit-scrollbar-thumb {
+    background: #CCCCCC; 
+    border-radius: 10px;
+  }
+  

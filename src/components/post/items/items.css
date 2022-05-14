@@ -39,8 +39,50 @@
 
 .post-content{
     margin-top: 15px;
-    border-bottom: 1px solid #eee;
     padding-bottom: 10px;
+}
+
+.show-comment{
+    border-bottom: 1px solid #eee;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.show-comment .emoji-comment{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.show-comment .emoji-comment p{
+    margin-left: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.show-comment .count-comment{
+    color: #555;
+    font-size: 14px;
+}
+
+.show-comment .count-comment:hover,.show-comment .emoji-comment:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.control-emoji{
+    background-color: #1877f2;
+    padding: 2px;
+    border-radius: 50%;
+    width: 20px;
+    text-align: center;
+}
+
+.show-comment .emoji-comment .like-active{
+    color: #fff;
+    font-size: 12px;
 }
 .post-like{
     margin-top: 5px;
@@ -102,4 +144,8 @@
 }
 .post-comment input:focus{
     outline: none;
+}
+
+.post-like ul .active{
+    color: #1877f2;
 }

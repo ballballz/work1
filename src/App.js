@@ -1,12 +1,19 @@
 import './App.css';
-import { Header } from './components/header/Header';
-import { Post } from './components/post/Post';
+import {Header} from './components/header/Header';
+import {Post} from './components/post/Post';
+import Messengers from './components/messengers/Messengers';
+import Profile from './components/profile/Profile';
+
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Post />
+      <div className='control-flex'>
+        <Profile />
+        <Post />
+        <Messengers />
+      </div>
     </div>
   );
 }
