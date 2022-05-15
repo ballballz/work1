@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './items.css'
 import {Comments} from './comments/Comments'
 import {BiMessage,BiLike} from 'react-icons/bi'
@@ -7,16 +7,17 @@ import {FaLock} from 'react-icons/fa'
 import {AiFillLike} from 'react-icons/ai'
 
 
-
-export const Items = () => {
+export const Items = ({id,name,image,title,quote}) => {
+  const [comments,setComment] = useState([])
+  const [likes,setLikes] = useState([])
   return (
     <div className='post-items'>
       <div className='item'>
         <div className='control-people'>
           <div className="people-post">
-            <img src={Profile} />
+            <img src={image} />
             <div>
-              <h5>Ball Ball'</h5>
+              <h4>{name}</h4>
               <span>21 นาที &#183; <FaLock/></span>
             </div>
           </div>
@@ -25,26 +26,28 @@ export const Items = () => {
           </div>
         </div>
         <div className='post-content'>
-          DDDDDD
+          {quote}
         </div>
         <div className='show-comment'>
+        {likes.length > 0 ? 
           <div className='emoji-comment'>
             <div className='control-emoji'>
               <AiFillLike className='like-active'/>
             </div>
             <p>Ball Ball'</p>
           </div>
+        : null}
           <div className='count-comment'>
-            <p>1 ความคิดเห็น</p>
+          {comments.length > 0 ? <p>{comments.length + 1} ความคิดเห็น</p> : null }
           </div>
         </div>
         <div className='post-like'>
           <ul>
-            <li className='active'><BiLike className='like'/>ถูกใจ</li>
+            <li className={likes.length > 0 ? 'active' : null}><BiLike className='like'/>ถูกใจ</li>
             <li><BiMessage className='message'/>แสดงความคิดเห็น</li>
           </ul>
         </div>
-        <Comments />
+        {comments.length > 0 ? <Comments /> : null}
         <div className='post-comment'>
           <img src={Profile}/>
           <input type="text" placeholder='เขียนแสดงความคิดเห็น...'/>

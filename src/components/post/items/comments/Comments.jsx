@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Commentsend} from './sendcomments/Commentsend'
 import './comments.css'
 import Profile from '../../../header/profile.jpg'
 
 export const Comments = () => {
+    const [isOpen,setIsOpen] = useState(false)
+
     return (
         <div className='comment-all'>
             <div className='comment'>
@@ -13,10 +15,7 @@ export const Comments = () => {
                 <div className='comment-people'>
                     <h5>Ball Ball'</h5>
                     <p>
-                        AAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        AAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        AAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        AAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                        a
                     </p>
                 </div>
                 <div className='comment-edit'>
@@ -26,10 +25,10 @@ export const Comments = () => {
             <div className='comment-like'>
                 <ul>
                     <li>ถูกใจ</li>
-                    <li>ตอบกลับ</li>
+                    <li onClick={()=>setIsOpen(true)}>ตอบกลับ</li>
                     <li><span>30 นาที</span></li>
                 </ul>
-                <Commentsend />
+                {isOpen && <Commentsend />}
             </div>
         </div>
         

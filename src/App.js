@@ -10,9 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <div className='control-flex'>
-        <Profile />
         <Post />
-        <Messengers />
       </div>
     </div>
   );
