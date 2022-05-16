@@ -1,16 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './items.css'
 import {Comments} from './comments/Comments'
-import {BiMessage,BiLike} from 'react-icons/bi'
+import {BiMessage,BiLike,BiBox} from 'react-icons/bi'
 import Profile from '../../../images/profile.jpg'
 import {FaLock} from 'react-icons/fa'
 import {AiFillLike} from 'react-icons/ai'
+import EditPost from './edit/EditPost'
+import MenuUser from './menuuser/MenuUser'
+import Menu from './menu/Menu'
 
 
-export const Items = ({id,name,image,title,quote}) => {
+
+const arr = ["John","Marin"]
+
+export const Items = ({id,name,image,title,quote,time,index}) => {
   const [comments,setComments] = useState([])
-  const [likes,setLikes] = useState([])
+  const [menuItem,setMenuItem] = useState(false)
+  const [likes,setLikes] = useState(arr)
   const [text,setText] = useState("")
+  const [user,setUser] = useState("Ball Ball'")
+  const [userLike,setUserLike] = useState(false)
+  const [isModalEdit,setIsModalEdit] = useState(false)
+  
 
   const onKeyEnter = (e) => {
     if(e.key === 'Enter'){
@@ -20,6 +31,22 @@ export const Items = ({id,name,image,title,quote}) => {
       setText("")
     }
   }
+
+  const onClick = () => {
+    setUserLike(!userLike)
+
+    if(!userLike){
+      setLikes((likes)=>{
+        return  [user,...likes]
+      })
+    }else{
+      setLikes((likes)=>{
+        const check = likes.filter((check)=>check !== user)
+        return check
+      })
+    }
+  }
+
   return (
     <div className='post-items'>
       <div className='item'>
@@ -28,11 +55,13 @@ export const Items = ({id,name,image,title,quote}) => {
             <img src={image} />
             <div>
               <h4>{name}</h4>
-              <span>21 นาที &#183; <FaLock/></span>
+              <span>{time} &#183; <FaLock/></span>
             </div>
           </div>
-          <div className='post-act'>
-            <span>...</span>
+          <div className='post-act' onClick={()=>setMenuItem(!menuItem)}>
+            <span>&#183;&#183;&#183;</span>
+            {menuItem && name === user && <MenuUser setIsModalEdit={setIsModalEdit} />}
+            {menuItem && name !== user && <Menu />}
           </div>
         </div>
         <div className='post-content'>
@@ -45,7 +74,7 @@ export const Items = ({id,name,image,title,quote}) => {
                 <div className='control-emoji'>
                   <AiFillLike className='like-active'/>
                 </div>
-                <p>Ball Ball'</p>
+                <p>{userLike ? user + ' และคนอื่นๆ อีก ' + (likes.length - 1) +' คน': likes.length}  </p>
             </>
             : null}
           </div>
@@ -55,7 +84,7 @@ export const Items = ({id,name,image,title,quote}) => {
         </div>
         <div className='post-like'>
           <ul>
-            <li className={likes.length > 0 ? 'active' : null}><BiLike className='like'/>ถูกใจ</li>
+            <li className={userLike ? 'active' : null} onClick={onClick}><BiLike className='like'/>ถูกใจ</li>
             <li><BiMessage className='message'/>แสดงความคิดเห็น</li>
           </ul>
         </div>
@@ -73,6 +102,14 @@ export const Items = ({id,name,image,title,quote}) => {
           />
         </div>
       </div>
+      {isModalEdit && name === user &&
+      <div className='modal-edit'>
+        <div className='control-modal-edit'>
+          <div className='close-edit' onClick={()=>setIsModalEdit(false)}>&#x2716;</div>
+          <EditPost quote={quote}/>
+        </div>
+      </div>
+      }
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Items} from './items/Items'
 import './post.css'
 import CreatePost from './action/create/CreatePost'
@@ -16,8 +16,9 @@ export const Post = () => {
     })
     setIsModal(false)
   }
-  console.log(posts)
+
   return (
+
     <div className='post-all'>
       <ProfilePost setIsModal={setIsModal}/>
       {isModal && 
@@ -29,7 +30,7 @@ export const Post = () => {
       </div>
       }
       {posts.map((post,index)=>{
-        return <Items key={index} {...post}/>
+        return <Items key={index} {...post} index={index}/>
       })}
     </div>
   )

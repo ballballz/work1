@@ -23,11 +23,65 @@
     color: #555;
     font-size: 13px;
 }
+.post-act{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
 
+.post-act:hover{
+    background-color: #eee;
+}
 .post-act span{
     font-size: 30px;
     color: #555;
     cursor: pointer;
+}
+.post-act ul{
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 350px;
+    background-color: #fff;
+    box-shadow: 5px 15px 18px #CCCCCC;
+    padding: 10px;
+    z-index: 2;
+}
+.post-act ul li{
+    list-style: none;
+    color: #000;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 22px;
+}
+.post-act ul li span{
+    font-size: 15px;
+    color: #555;
+    margin-left: 10px;
+}
+.post-act ul li .edit-detail p{
+    margin-left: 10px;
+    font-size: 13px;
+}
+.post-act ul li p{
+    color: #555;
+    font-size: 14px;
+}
+.post-act ul li:hover{
+    cursor: pointer;
+    background-color: #eee;
+}
+.post-act ul .line-edit{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #eee;
 }
 .people-post img{
     width: 40px;
@@ -156,4 +210,47 @@
 
 .post-like ul .active{
     color: #1877f2;
+}
+
+.modal-edit{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(238, 238, 238, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-modal-edit{
+    position: relative;
+    width: 500px;
+    height: 430px;
+    background-color: #fff;
+    box-shadow: 5px 10px 18px #CCCCCC;
+    border-radius: 10px;
+}
+
+.control-modal-edit .close-edit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: 300;
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border-radius: 50%;
+    text-align: center;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.control-modal-edit .close-edit:hover{
+    background-color: #CCCCCC;
 }

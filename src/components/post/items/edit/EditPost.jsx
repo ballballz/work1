@@ -9,7 +9,7 @@ import {HiLocationMarker} from 'react-icons/hi'
 import Profile from '../../../../images/profile.jpg'
 
 
-const EditPost = () => {
+const EditPost = ({quote}) => {
     return (
         <div className='edit-post'>
             <h3>แก้ไขโพสต์</h3>
@@ -23,7 +23,7 @@ const EditPost = () => {
                     </div>
                 </div>
                 <div className='edit-text'>
-                    <textarea cols="50" rows="5" placeholder='คุณคิดอะไรอยู่ Ball'></textarea>
+                    <textarea cols="50" rows="5" placeholder='คุณคิดอะไรอยู่ Ball'>{quote}</textarea>
                 </div>
                 <div className='edit-op'>
                     <h4>เพิ่มลงในโพสต์ของคุณ</h4>
@@ -36,7 +36,7 @@ const EditPost = () => {
                         <li>&#183;&#183;&#183;</li>
                     </ul>
                 </div>
-                <button className='edit'>โพสต์</button>
+                <button className='edit'>บันทึก</button>
             </div>
         </div>
     )

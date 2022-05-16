@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './createpost.css'
 import {FaLock,FaUserTag} from 'react-icons/fa'
 import {AiOutlineCaretDown} from 'react-icons/ai'
@@ -11,6 +11,7 @@ import Profile from '../../../../images/profile.jpg'
 
 const CreatePost = ({addPost}) => {
     const [textPost,setTextPost] = useState("")
+    const [disabled,setDisabled] = useState(true)
 
     const onClick = () =>{
         const data = {
@@ -20,6 +21,15 @@ const CreatePost = ({addPost}) => {
         }
         addPost(data)
         setTextPost("")
+    }
+
+    const onChange = (e) => {
+        setTextPost(e.target.value)
+        if(e.target.value !== ""){
+            setDisabled(false)
+        }else{
+            setDisabled(true)
+        }
     }
     return (
         <div className='create-post'>
@@ -38,7 +48,7 @@ const CreatePost = ({addPost}) => {
                     cols="50" 
                     rows="5" 
                     placeholder='คุณคิดอะไรอยู่ Ball'
-                    onChange={(e)=>setTextPost(e.target.value)}
+                    onChange={onChange}
                     value={textPost}
                     >
                     </textarea>
@@ -54,7 +64,13 @@ const CreatePost = ({addPost}) => {
                         <li>&#183;&#183;&#183;</li>
                     </ul>
                 </div>
-                <button className='create' onClick={onClick}>โพสต์</button>
+                <button 
+                className={!disabled ? "create active-create" : "create"}
+                onClick={onClick}
+                disabled={disabled}
+                >
+                โพสต์
+                </button>
             </div>
         </div>
     )
