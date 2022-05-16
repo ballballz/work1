@@ -1,6 +1,6 @@
 import React from 'react'
 import './commentsend.css'
-import Profile from '../../../../header/profile.jpg'
+import Profile from '../../../../../images/profile.jpg'
 
 export const Commentsend = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import './profilepost.css'
-import Profile from '../../header/profile.jpg'
+import Profile from '../../../images/profile.jpg'
 import {MdPhotoLibrary,MdVideoCameraBack} from 'react-icons/md'
 import {GoSmiley} from 'react-icons/go'
 

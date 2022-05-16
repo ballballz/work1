@@ -2,14 +2,24 @@ import React, { useState } from 'react'
 import './items.css'
 import {Comments} from './comments/Comments'
 import {BiMessage,BiLike} from 'react-icons/bi'
-import Profile from '../../header/profile.jpg'
+import Profile from '../../../images/profile.jpg'
 import {FaLock} from 'react-icons/fa'
 import {AiFillLike} from 'react-icons/ai'
 
 
 export const Items = ({id,name,image,title,quote}) => {
-  const [comments,setComment] = useState([])
+  const [comments,setComments] = useState([])
   const [likes,setLikes] = useState([])
+  const [text,setText] = useState("")
+
+  const onKeyEnter = (e) => {
+    if(e.key === 'Enter'){
+      setComments((comment)=>{
+        return [e.target.value,...comment]
+      })
+      setText("")
+    }
+  }
   return (
     <div className='post-items'>
       <div className='item'>
@@ -29,16 +39,18 @@ export const Items = ({id,name,image,title,quote}) => {
           {quote}
         </div>
         <div className='show-comment'>
-        {likes.length > 0 ? 
           <div className='emoji-comment'>
-            <div className='control-emoji'>
-              <AiFillLike className='like-active'/>
-            </div>
-            <p>Ball Ball'</p>
+          {likes.length > 0 ? 
+            <>
+                <div className='control-emoji'>
+                  <AiFillLike className='like-active'/>
+                </div>
+                <p>Ball Ball'</p>
+            </>
+            : null}
           </div>
-        : null}
           <div className='count-comment'>
-          {comments.length > 0 ? <p>{comments.length + 1} ความคิดเห็น</p> : null }
+          {comments.length > 0 ? <p>{comments.length} ความคิดเห็น</p> : null }
           </div>
         </div>
         <div className='post-like'>
@@ -47,10 +59,18 @@ export const Items = ({id,name,image,title,quote}) => {
             <li><BiMessage className='message'/>แสดงความคิดเห็น</li>
           </ul>
         </div>
-        {comments.length > 0 ? <Comments /> : null}
+        {comments.length > 0 ? comments.map((comment,index)=>{
+          return <Comments key={index} comment={comment}/>
+        }) : null}
         <div className='post-comment'>
           <img src={Profile}/>
-          <input type="text" placeholder='เขียนแสดงความคิดเห็น...'/>
+          <input 
+          type="text" 
+          placeholder='เขียนแสดงความคิดเห็น...'
+          onChange={(e)=>setText(e.target.value)}
+          onKeyDown={onKeyEnter}
+          value={text}
+          />
         </div>
       </div>
     </div>

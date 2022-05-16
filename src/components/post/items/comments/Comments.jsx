@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import {Commentsend} from './sendcomments/Commentsend'
 import './comments.css'
-import Profile from '../../../header/profile.jpg'
+import Profile from '../../../../images/profile.jpg'
 
-export const Comments = () => {
+export const Comments = ({comment}) => {
     const [isOpen,setIsOpen] = useState(false)
 
     return (
@@ -15,7 +15,7 @@ export const Comments = () => {
                 <div className='comment-people'>
                     <h5>Ball Ball'</h5>
                     <p>
-                        a
+                        {comment}
                     </p>
                 </div>
                 <div className='comment-edit'>

@@ -10,6 +10,13 @@ export const Post = () => {
   const [isModal,setIsModal] = useState(false)
   const [posts,setPosts] = useState(people)
 
+  const addPost = (newPost) =>{
+    setPosts((post)=>{
+      return [newPost,...post]
+    })
+    setIsModal(false)
+  }
+  console.log(posts)
   return (
     <div className='post-all'>
       <ProfilePost setIsModal={setIsModal}/>
@@ -17,7 +24,7 @@ export const Post = () => {
       <div className='modal'>
         <div className='control-modal'>
           <div className='close' onClick={()=>setIsModal(false)}>&#x2716;</div>
-          <CreatePost />
+          <CreatePost addPost={addPost}/>
         </div>
       </div>
       }

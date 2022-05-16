@@ -120,3 +120,33 @@
 .box2 ul li.active:hover{
     background-color: #fff;
 }
+
+@media only screen and (max-width: 480px){
+    .header{
+        max-width: 480px;
+        width: 100%;
+    }
+    .box1 input{
+        width: 390px !important;
+    }
+    .box2{
+        display: none;
+    }
+
+    .box3{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .header{
+        max-width: 768px;
+        width: 100%;
+    }
+    .box2{
+        display: none;
+    }
+    .box1 input{
+        width: 300px;
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './createpost.css'
 import {FaLock,FaUserTag} from 'react-icons/fa'
 import {AiOutlineCaretDown} from 'react-icons/ai'
@@ -9,7 +9,18 @@ import {HiLocationMarker} from 'react-icons/hi'
 import Profile from '../../../../images/profile.jpg'
 
 
-const CreatePost = () => {
+const CreatePost = ({addPost}) => {
+    const [textPost,setTextPost] = useState("")
+
+    const onClick = () =>{
+        const data = {
+            name : "Ball Ball'",
+            image : Profile,
+            quote : textPost
+        }
+        addPost(data)
+        setTextPost("")
+    }
     return (
         <div className='create-post'>
             <h3>สร้างโพสต์</h3>
@@ -23,7 +34,14 @@ const CreatePost = () => {
                     </div>
                 </div>
                 <div className='create-text'>
-                    <textarea cols="50" rows="5" placeholder='คุณคิดอะไรอยู่ Ball'></textarea>
+                    <textarea 
+                    cols="50" 
+                    rows="5" 
+                    placeholder='คุณคิดอะไรอยู่ Ball'
+                    onChange={(e)=>setTextPost(e.target.value)}
+                    value={textPost}
+                    >
+                    </textarea>
                 </div>
                 <div className='create-op'>
                     <h4>เพิ่มลงในโพสต์ของคุณ</h4>
@@ -36,7 +54,7 @@ const CreatePost = () => {
                         <li>&#183;&#183;&#183;</li>
                     </ul>
                 </div>
-                <button className='create'>โพสต์</button>
+                <button className='create' onClick={onClick}>โพสต์</button>
             </div>
         </div>
     )

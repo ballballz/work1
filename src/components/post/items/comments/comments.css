@@ -19,7 +19,7 @@
 }
 
 .comment-people p{
-    width: 460px;
+    max-width: 460px;
     margin-top: 5px;
     word-wrap: break-word;
 }
@@ -59,4 +59,10 @@
     color: #555;
     margin-left: 10px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 480px){
+    .comment-people p{
+       max-width: 380px;
+    }
 }

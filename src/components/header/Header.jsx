@@ -5,7 +5,7 @@ import {AiOutlineYoutube,AiOutlineHome,AiFillCaretDown} from 'react-icons/ai'
 import {HiOutlineUserGroup} from 'react-icons/hi'
 import {CgMenuGridR} from 'react-icons/cg'
 import {RiStore2Line,RiLayoutMasonryLine} from 'react-icons/ri'
-import Profile from './profile.jpg'
+import Profile from '../../images/profile.jpg'
 
 
 

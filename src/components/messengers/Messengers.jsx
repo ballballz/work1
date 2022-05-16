@@ -1,6 +1,6 @@
 import React from 'react'
 import './messengers.css'
-import Profile from '../header/profile.jpg'
+import Profile from '../../images/profile.jpg'
 import {RiVideoAddFill} from 'react-icons/ri'
 import {BiSearch} from 'react-icons/bi'
 
