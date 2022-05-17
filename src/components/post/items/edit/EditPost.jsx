@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './editpost.css'
 import {FaLock,FaUserTag} from 'react-icons/fa'
 import {AiOutlineCaretDown} from 'react-icons/ai'
@@ -9,7 +9,26 @@ import {HiLocationMarker} from 'react-icons/hi'
 import Profile from '../../../../images/profile.jpg'
 
 
-const EditPost = ({quote}) => {
+const EditPost = ({quote,editItem}) => {
+
+    const [txtQuote,setTxtQuote] = useState(quote)
+    const [disabled,setDisabled] = useState(true)
+
+    const onChange = (e) => {
+        setTxtQuote(e.target.value)
+    }
+    const onClick = () => { 
+        editItem(txtQuote)
+    }
+
+    useEffect(()=>{
+        if(txtQuote !== quote){
+            setDisabled(false)
+        }else{
+            setDisabled(true)
+        }
+    },[txtQuote])
+
     return (
         <div className='edit-post'>
             <h3>แก้ไขโพสต์</h3>
@@ -23,7 +42,14 @@ const EditPost = ({quote}) => {
                     </div>
                 </div>
                 <div className='edit-text'>
-                    <textarea cols="50" rows="5" placeholder='คุณคิดอะไรอยู่ Ball'>{quote}</textarea>
+                    <textarea 
+                    cols="50" 
+                    rows="5" 
+                    placeholder='คุณคิดอะไรอยู่ Ball'
+                    onChange={onChange}
+                    value={txtQuote}
+                    >
+                    </textarea>
                 </div>
                 <div className='edit-op'>
                     <h4>เพิ่มลงในโพสต์ของคุณ</h4>
@@ -36,7 +62,13 @@ const EditPost = ({quote}) => {
                         <li>&#183;&#183;&#183;</li>
                     </ul>
                 </div>
-                <button className='edit'>บันทึก</button>
+                <button 
+                className={!disabled ? "active-edit" : "edit"} 
+                onClick={onClick}
+                disabled={disabled}
+                >
+                บันทึก
+                </button>
             </div>
         </div>
     )

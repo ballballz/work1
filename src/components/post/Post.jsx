@@ -17,6 +17,7 @@ export const Post = () => {
     setIsModal(false)
   }
 
+
   return (
 
     <div className='post-all'>

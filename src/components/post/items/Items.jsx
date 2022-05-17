@@ -13,7 +13,7 @@ import Menu from './menu/Menu'
 
 const arr = ["John","Marin"]
 
-export const Items = ({id,name,image,title,quote,time,index}) => {
+export const Items = ({id,name,image,title,quote,time,index,setIsMenu,isMenu}) => {
   const [comments,setComments] = useState([])
   const [menuItem,setMenuItem] = useState(false)
   const [likes,setLikes] = useState(arr)
@@ -21,7 +21,7 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
   const [user,setUser] = useState("Ball Ball'")
   const [userLike,setUserLike] = useState(false)
   const [isModalEdit,setIsModalEdit] = useState(false)
-  
+  const [editQuote,setEditQuote] = useState(quote)
 
   const onKeyEnter = (e) => {
     if(e.key === 'Enter'){
@@ -47,6 +47,11 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
     }
   }
 
+  const editQuoteItem = (txt) => {
+    setEditQuote(txt)
+    setIsModalEdit(false)
+  }
+
   return (
     <div className='post-items'>
       <div className='item'>
@@ -60,12 +65,12 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
           </div>
           <div className='post-act' onClick={()=>setMenuItem(!menuItem)}>
             <span>&#183;&#183;&#183;</span>
-            {menuItem && name === user && <MenuUser setIsModalEdit={setIsModalEdit} />}
+            {menuItem && name === user && <MenuUser setIsModalEdit={setIsModalEdit}/>}
             {menuItem && name !== user && <Menu />}
           </div>
         </div>
         <div className='post-content'>
-          {quote}
+          {editQuote}
         </div>
         <div className='show-comment'>
           <div className='emoji-comment'>
@@ -106,7 +111,7 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
       <div className='modal-edit'>
         <div className='control-modal-edit'>
           <div className='close-edit' onClick={()=>setIsModalEdit(false)}>&#x2716;</div>
-          <EditPost quote={quote}/>
+          <EditPost quote={editQuote} editItem={editQuoteItem}/>
         </div>
       </div>
       }
