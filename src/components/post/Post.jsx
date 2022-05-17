@@ -17,7 +17,15 @@ export const Post = () => {
     setIsModal(false)
   }
 
-  
+  const editPostItem = (newQuote,id) => {
+    const newEdit = posts.filter((item)=>{
+      if(item.id === id){
+        item.quote = newQuote
+      }
+      return item
+    })
+    setPosts(newEdit)
+  }
 
 
   return (
@@ -28,12 +36,12 @@ export const Post = () => {
       <div className='modal'>
         <div className='control-modal'>
           <div className='close' onClick={()=>setIsModal(false)}>&#x2716;</div>
-          <CreatePost addPost={addPost}/>
+          <CreatePost addPost={addPost} id={posts.length}/>
         </div>
       </div>
       }
       {posts.map((post,index)=>{
-        return <Items key={index} {...post} index={index}/>
+        return <Items key={index} {...post} index={index} editPostItem={editPostItem}/>
       })}
     </div>
   )

@@ -9,7 +9,7 @@ import {HiLocationMarker} from 'react-icons/hi'
 import Profile from '../../../../images/profile.jpg'
 
 
-const EditPost = ({quote,editItem}) => {
+const EditPost = ({quote,editItem,id,isModalEdit}) => {
 
     const [txtQuote,setTxtQuote] = useState(quote)
     const [disabled,setDisabled] = useState(true)
@@ -18,7 +18,8 @@ const EditPost = ({quote,editItem}) => {
         setTxtQuote(e.target.value)
     }
     const onClickEdit = () => { 
-        editItem(txtQuote)
+        editItem(txtQuote,id)
+        isModalEdit(false)
     }
 
     useEffect(()=>{

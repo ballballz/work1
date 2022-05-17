@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import './items.css'
 import {Comments} from './comments/Comments'
+import {VscLock,VscEdit,VscBookmark} from 'react-icons/vsc'
+import {RiDeleteBin6Line} from 'react-icons/ri'
+import {CgCalendarDates} from 'react-icons/cg'
+import {BsBellSlash} from 'react-icons/bs'
 import {BiMessage,BiLike,BiBox} from 'react-icons/bi'
 import Profile from '../../../images/profile.jpg'
 import {FaLock} from 'react-icons/fa'
-import {AiFillLike} from 'react-icons/ai'
+import {AiFillLike,AiOutlineGlobal} from 'react-icons/ai'
 import EditPost from './edit/EditPost'
-import MenuUser from './menuuser/MenuUser'
-import Menu from './menu/Menu'
 
 
 
 const arr = ["John","Marin"]
 
-export const Items = ({id,name,image,title,quote,time,index}) => {
+export const Items = ({id,name,image,title,quote,time,index,editPostItem}) => {
   const [comments,setComments] = useState([])
   const [menuItem,setMenuItem] = useState(false)
   const [likes,setLikes] = useState(arr)
@@ -21,7 +23,6 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
   const [user,setUser] = useState("Ball Ball'")
   const [userLike,setUserLike] = useState(false)
   const [isModalEdit,setIsModalEdit] = useState(false)
-  const [editQuote,setEditQuote] = useState("")
 
   const onKeyEnter = (e) => {
     if(e.key === 'Enter'){
@@ -47,11 +48,6 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
     }
   }
 
-  const editQuoteItem = (txt) => {
-    setEditQuote(txt)
-    setIsModalEdit(false)
-  }
-
   return (
     <div className='post-items'>
       <div className='item'>
@@ -65,12 +61,77 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
           </div>
           <div className='post-act' onClick={()=>setMenuItem(!menuItem)}>
             <span>&#183;&#183;&#183;</span>
-            {menuItem && name === user && <MenuUser setIsModalEdit={setIsModalEdit}/>}
-            {menuItem && name !== user && <Menu />}
+            {menuItem && name === user && 
+            <>
+              <ul>
+                <li>
+                <VscBookmark/>
+                <div className='edit-detail'>
+                    <span>บันทึกโพสต์</span>
+                    <p>เพิ่มโพสต์นี้ลงในรายการที่บันทีกไว้ของคุณ</p>
+                </div>
+                </li>
+                <div className='line-edit'></div>
+                <li onClick={()=>setIsModalEdit(true)}><VscEdit/><span>แก้ไขโพสต์</span></li>
+                <li><VscLock/><span>แก้ไขกลุ่มเป้าหมาย</span></li>
+                <li><BsBellSlash/><span>ปิดการแจ้งเตือนเกี่ยวกับโพสต์นี้</span></li>
+                <li><AiOutlineGlobal/><span>ปิดการแปลภาษา</span></li>
+                <li><CgCalendarDates/><span>แก้ไขวันที่</span></li>
+                <div className='line-edit'></div>
+                <li><BiBox/><span>ย้ายไปที่คลัง</span></li>
+                <li>
+                <RiDeleteBin6Line/>
+                <div className='edit-detail'>
+                    <span>ย้ายไปที่ถังขยะ</span>
+                    <p>รายการในถังขยะของคุณจะถูกลบหลังจาก 30 วัน</p>
+                </div>
+                </li>
+              </ul>
+            </>
+            } 
+            {menuItem && name !== user && 
+            <>
+              <ul>
+                <li>
+                <div className='edit-detail'>
+                    <span>บันทึกโพสต์</span>
+                    <p>เพิ่มโพสต์นี้ลงในรายการที่บันทีกไว้ของคุณ</p>
+                </div>
+                </li>
+                <div className='line-edit'></div>
+                <li><span>เปิดการแจ้งเตือนสำหรับโพสต์นี้</span></li>
+                <div className='line-edit'></div>
+                <li>
+                <div className='edit-detail'>
+                    <span>ซ่อนโพสต์</span>
+                    <p>เห็นโพสต์แบบนี้น้อยลง</p>
+                </div>
+                </li>
+                <li>
+                <div className='edit-detail'>
+                    <span>ซ่อนโพสต์ ชั่วคราวเป็นเวลา 30 วัน</span>
+                    <p>หยุดเห็นโพสต์ชั่วคราว</p>
+                </div>
+                </li>
+                <li>
+                <div className='edit-detail'>
+                    <span>เลิกติดตาม</span>
+                    <p>หยุดเห็นโพสต์แต่ยังคงเป็นเพื่อนกัน</p>
+                </div>
+                </li>
+                <li>
+                <div className='edit-detail'>
+                    <span>รายงานโพสต์</span>
+                    <p>ฉันกังวลเกี่ยวกับโพสต์นี้</p>
+                </div>
+                </li>
+              </ul>
+            </>
+            }
           </div>
         </div>
         <div className='post-content'>
-          {editQuote === "" ? quote : editQuote}
+          {quote}
         </div>
         <div className='show-comment'>
           <div className='emoji-comment'>
@@ -111,7 +172,7 @@ export const Items = ({id,name,image,title,quote,time,index}) => {
       <div className='modal-edit'>
         <div className='control-modal-edit'>
           <div className='close-edit' onClick={()=>setIsModalEdit(false)}>&#x2716;</div>
-          <EditPost quote={quote} editItem={editQuoteItem}/>
+          <EditPost quote={quote} editItem={editPostItem} id={id} isModalEdit={setIsModalEdit}/>
         </div>
       </div>
       }
