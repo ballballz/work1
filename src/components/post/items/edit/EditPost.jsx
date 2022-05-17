@@ -14,10 +14,10 @@ const EditPost = ({quote,editItem}) => {
     const [txtQuote,setTxtQuote] = useState(quote)
     const [disabled,setDisabled] = useState(true)
 
-    const onChange = (e) => {
+    const onChangeEdit = (e) => {
         setTxtQuote(e.target.value)
     }
-    const onClick = () => { 
+    const onClickEdit = () => { 
         editItem(txtQuote)
     }
 
@@ -27,7 +27,7 @@ const EditPost = ({quote,editItem}) => {
         }else{
             setDisabled(true)
         }
-    },[txtQuote])
+    },[txtQuote,quote])
 
     return (
         <div className='edit-post'>
@@ -46,7 +46,7 @@ const EditPost = ({quote,editItem}) => {
                     cols="50" 
                     rows="5" 
                     placeholder='คุณคิดอะไรอยู่ Ball'
-                    onChange={onChange}
+                    onChange={onChangeEdit}
                     value={txtQuote}
                     >
                     </textarea>
@@ -64,7 +64,7 @@ const EditPost = ({quote,editItem}) => {
                 </div>
                 <button 
                 className={!disabled ? "active-edit" : "edit"} 
-                onClick={onClick}
+                onClick={onClickEdit}
                 disabled={disabled}
                 >
                 บันทึก

@@ -13,7 +13,7 @@ import Menu from './menu/Menu'
 
 const arr = ["John","Marin"]
 
-export const Items = ({id,name,image,title,quote,time,index,setIsMenu,isMenu}) => {
+export const Items = ({id,name,image,title,quote,time,index}) => {
   const [comments,setComments] = useState([])
   const [menuItem,setMenuItem] = useState(false)
   const [likes,setLikes] = useState(arr)
@@ -21,7 +21,7 @@ export const Items = ({id,name,image,title,quote,time,index,setIsMenu,isMenu}) =
   const [user,setUser] = useState("Ball Ball'")
   const [userLike,setUserLike] = useState(false)
   const [isModalEdit,setIsModalEdit] = useState(false)
-  const [editQuote,setEditQuote] = useState(quote)
+  const [editQuote,setEditQuote] = useState("")
 
   const onKeyEnter = (e) => {
     if(e.key === 'Enter'){
@@ -70,7 +70,7 @@ export const Items = ({id,name,image,title,quote,time,index,setIsMenu,isMenu}) =
           </div>
         </div>
         <div className='post-content'>
-          {editQuote}
+          {editQuote === "" ? quote : editQuote}
         </div>
         <div className='show-comment'>
           <div className='emoji-comment'>
@@ -111,7 +111,7 @@ export const Items = ({id,name,image,title,quote,time,index,setIsMenu,isMenu}) =
       <div className='modal-edit'>
         <div className='control-modal-edit'>
           <div className='close-edit' onClick={()=>setIsModalEdit(false)}>&#x2716;</div>
-          <EditPost quote={editQuote} editItem={editQuoteItem}/>
+          <EditPost quote={quote} editItem={editQuoteItem}/>
         </div>
       </div>
       }

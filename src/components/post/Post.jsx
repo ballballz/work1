@@ -17,6 +17,8 @@ export const Post = () => {
     setIsModal(false)
   }
 
+  
+
 
   return (
 
