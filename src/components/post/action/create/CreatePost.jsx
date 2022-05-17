@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './createpost.css'
 import {FaLock,FaUserTag} from 'react-icons/fa'
 import {AiOutlineCaretDown} from 'react-icons/ai'
-import {MdPhotoLibrary} from 'react-icons/md'
+import {MdNorthWest, MdPhotoLibrary} from 'react-icons/md'
 import {GoSmiley} from 'react-icons/go'
 import {GiMicrophone} from 'react-icons/gi'
 import {HiLocationMarker} from 'react-icons/hi'
@@ -18,7 +18,7 @@ const CreatePost = ({addPost,id}) => {
             id: id + 1,
             name : "Ball Ball'",
             image : Profile,
-            quote : textPost
+            quote : textPost,
         }
         addPost(data)
         setTextPost("")
