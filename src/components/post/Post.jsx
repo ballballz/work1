@@ -27,6 +27,11 @@ export const Post = () => {
     setPosts(newEdit)
   }
 
+  const deletePostItem = (id) => {
+    const newDelete = posts.filter((item)=>item.id !== id)
+    setPosts(newDelete)
+  }
+
 
   return (
 
@@ -41,7 +46,13 @@ export const Post = () => {
       </div>
       }
       {posts.map((post,index)=>{
-        return <Items key={index} {...post} index={index} editPostItem={editPostItem}/>
+        return <Items 
+        key={index} 
+        {...post} 
+        index={index} 
+        editPostItem={editPostItem} 
+        deletePostItem={deletePostItem}
+        />
       })}
     </div>
   )

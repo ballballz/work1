@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <div className='header'>
         <div className='box1'>
-            <div className='logo'>BallBall'</div>
+            <div className='logo'>Ball'</div>
             <input type="text" placeholder="ค้นหาบน Ball Ball':" />
         </div>
         <div className='box2'>

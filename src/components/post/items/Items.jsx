@@ -15,7 +15,7 @@ import EditPost from './edit/EditPost'
 
 const arr = ["John","Marin"]
 
-export const Items = ({id,name,image,title,quote,time,index,editPostItem}) => {
+export const Items = ({id,name,image,title,quote,time,index,editPostItem,deletePostItem}) => {
   const [comments,setComments] = useState([])
   const [menuItem,setMenuItem] = useState(false)
   const [likes,setLikes] = useState(arr)
@@ -79,7 +79,7 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem}) => {
                 <li><CgCalendarDates/><span>แก้ไขวันที่</span></li>
                 <div className='line-edit'></div>
                 <li><BiBox/><span>ย้ายไปที่คลัง</span></li>
-                <li>
+                <li onClick={()=>deletePostItem(id)}>
                 <RiDeleteBin6Line/>
                 <div className='edit-detail'>
                     <span>ย้ายไปที่ถังขยะ</span>

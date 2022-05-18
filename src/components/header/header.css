@@ -17,14 +17,21 @@
     background-color: #fff;
     box-shadow: 0px 5px rgba(238, 238, 238, 1);
 }
+.box1{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 
 .box1 .logo{
-    margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    color: #385898;
-    font-size: 45px;
+    color: #fff;
+    font-size: 10px;
     cursor: pointer;
+    background-color: #385898;
+    padding: 15px;
+    border-radius: 50%;
 }
 .box1 input{
     width: 220px;
@@ -126,6 +133,10 @@
         max-width: 480px;
         width: 100%;
     }
+    .box1{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
     .box1 input{
         width: 390px !important;
     }
@@ -142,6 +153,10 @@
     .header{
         max-width: 768px;
         width: 100%;
+    }
+    .box1{
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .box2{
         display: none;
