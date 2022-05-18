@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useRef} from 'react'
 import './items.css'
 import {Comments} from './comments/Comments'
 import {VscLock,VscEdit,VscBookmark} from 'react-icons/vsc'
@@ -23,6 +23,17 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem,deleteP
   const [user,setUser] = useState("Ball Ball'")
   const [userLike,setUserLike] = useState(false)
   const [isModalEdit,setIsModalEdit] = useState(false)
+  const [times,setTimes] = useState(Number(time))
+
+  const useFocus = () => {
+    const txtCheck = useRef(null)
+    const setFocus = () => {txtCheck.current &&  txtCheck.current.focus()}
+
+    return [ txtCheck, setFocus ] 
+}
+
+const [inputFocus,setInputFocus] = useFocus()
+
 
   const onKeyEnter = (e) => {
     if(e.key === 'Enter'){
@@ -47,6 +58,11 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem,deleteP
       })
     }
   }
+  const displayHello = () => {
+    const newTime = times + 1
+    setTimes(newTime)
+  }
+  setInterval(displayHello, 60000);
 
   return (
     <div className='post-items'>
@@ -56,7 +72,7 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem,deleteP
             <img src={image} />
             <div>
               <h4>{name}</h4>
-              <span>{time} &#183; <FaLock/></span>
+              <span>{times} นาที &#183; <FaLock/></span>
             </div>
           </div>
           <div className='post-act' onClick={()=>setMenuItem(!menuItem)}>
@@ -140,7 +156,9 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem,deleteP
                 <div className='control-emoji'>
                   <AiFillLike className='like-active'/>
                 </div>
-                <p>{userLike ? user + ' และคนอื่นๆ อีก ' + (likes.length - 1) +' คน': likes.length}  </p>
+                <p>  
+                  {userLike ? user + ' และคนอื่นๆ อีก ' + (likes.length - 1) +' คน': likes.length}
+                </p>
             </>
             : null}
           </div>
@@ -151,7 +169,7 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem,deleteP
         <div className='post-like'>
           <ul>
             <li className={userLike ? 'active' : null} onClick={onClick}><BiLike className='like'/>ถูกใจ</li>
-            <li><BiMessage className='message'/>แสดงความคิดเห็น</li>
+            <li onClick={setInputFocus}><BiMessage className='message'/>แสดงความคิดเห็น</li>
           </ul>
         </div>
         {comments.length > 0 ? comments.map((comment,index)=>{
@@ -165,6 +183,7 @@ export const Items = ({id,name,image,title,quote,time,index,editPostItem,deleteP
           onChange={(e)=>setText(e.target.value)}
           onKeyDown={onKeyEnter}
           value={text}
+          ref={inputFocus}
           />
         </div>
       </div>

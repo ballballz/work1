@@ -12,13 +12,14 @@ import Profile from '../../../../images/profile.jpg'
 const CreatePost = ({addPost,id}) => {
     const [textPost,setTextPost] = useState("")
     const [disabled,setDisabled] = useState(true)
-
+    
     const onClick = () =>{
         const data = {
             id: id + 1,
             name : "Ball Ball'",
             image : Profile,
             quote : textPost,
+            time : 1
         }
         addPost(data)
         setTextPost("")
